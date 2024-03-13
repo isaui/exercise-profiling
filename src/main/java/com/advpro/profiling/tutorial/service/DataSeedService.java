@@ -7,13 +7,15 @@ import com.advpro.profiling.tutorial.repository.CourseRepository;
 import com.advpro.profiling.tutorial.repository.StudentCourseRepository;
 import com.advpro.profiling.tutorial.repository.StudentRepository;
 import com.github.javafaker.Faker;
+import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 import java.util.stream.Collectors;
+
+
 
 /**
  * @author muhammad.khadafi
@@ -21,6 +23,8 @@ import java.util.stream.Collectors;
 @Service
 public class DataSeedService {
 
+    @Autowired
+    HikariDataSource hikariDataSource;
     @Autowired
     private StudentRepository studentRepository;
     @Autowired
@@ -45,6 +49,7 @@ public class DataSeedService {
         }
     }
 
+
     public void seedCourse() {
         Faker faker = new Faker(new Locale("in-ID"));
         for (int i = 0; i < NUMBER_OF_COURSE; i++) {
@@ -60,7 +65,6 @@ public class DataSeedService {
     public void seedStudentCourses() {
         List<Student> students = studentRepository.findAll();
         List<Course> courses = courseRepository.findAll();
-
         for (Student student : students) {
             List<Course> selectedCourses = new Random().ints(0, courses.size())
                     .distinct()
