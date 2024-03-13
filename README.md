@@ -17,7 +17,7 @@ Hasil Tes API /all-student-name melalui CLI
 ![](documentation/GUI-test-get-student-with-highest-gpa.png)
 Hasil Tes API /highest-gpa melalui GUI
 
-![](documentation/CLI-test-get-student-with-highest-gpa.pngg)
+![](documentation/CLI-test-get-student-with-highest-gpa.png)
 Hasil Tes API /highest-gpa melalui CLI
 
 1. Pengujian kinerja dengan JMeter melibatkan simulasi beban pengguna pada aplikasi untuk mengukur kinerjanya dalam berbagai kondisi. JMeter berfokus pada pengukuran metrik 
