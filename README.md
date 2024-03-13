@@ -20,6 +20,18 @@ Hasil Tes API /highest-gpa melalui GUI
 ![](documentation/CLI-test-get-student-with-highest-gpa.png)
 Hasil Tes API /highest-gpa melalui CLI
 
+Setelah refactor->
+![](documentation/updated-get-all-student-name.png)
+Hasil Tes API /all-student-name melalui CLI
+
+![](documentation/updated-get-all-student.png)
+Hasil Tes API /all-student melalui CLI
+
+![](documentation/updated-student-with-highest-gpa.png)
+Hasil Tes API /highest-gpa melalui CLI
+
+Tampak bahwa pada ketiga endpoint tersebut terdapat improvement setelah dilakukan refactor code. Improvement tersebut berupa berkurangnya latensi dan request success menjadi lebih banyak.
+
 1. Pengujian kinerja dengan JMeter melibatkan simulasi beban pengguna pada aplikasi untuk mengukur kinerjanya dalam berbagai kondisi. JMeter berfokus pada pengukuran metrik 
 seperti waktu respons, throughput, dan penggunaan sumber daya. Intinya, semacam load testing. Sementara itu, profilisasi dengan IntelliJ Profiler melibatkan 
 analisis perilaku runtime dari aplikasi untuk mengidentifikasi bottleneck kinerja dan area yang perlu dioptimalkan. 
