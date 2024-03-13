@@ -30,6 +30,7 @@ public class StudentController {
     @GetMapping("/highest-gpa")
     public ResponseEntity<String> highestGpa() {
         Optional<Student> studentWithHighestGpa = studentService.findStudentWithHighestGpa();
+        System.out.println(studentWithHighestGpa.isEmpty());
         return ResponseEntity.ok(studentWithHighestGpa.get().toString());
     }
     @GetMapping("/all-student-name")

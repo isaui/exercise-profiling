@@ -5,6 +5,9 @@ import com.advpro.profiling.tutorial.model.Student;
 import com.advpro.profiling.tutorial.model.StudentCourse;
 import com.advpro.profiling.tutorial.repository.StudentCourseRepository;
 import com.advpro.profiling.tutorial.repository.StudentRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +24,8 @@ public class StudentService {
 
     @Autowired
     private StudentRepository studentRepository;
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Autowired
     private StudentCourseRepository studentCourseRepository;
@@ -39,16 +44,9 @@ public class StudentService {
     }
 
     public Optional<Student> findStudentWithHighestGpa() {
-        List<Student> students = studentRepository.findAll();
-        Student highestGpaStudent = null;
-        double highestGpa = 0.0;
-        for (Student student : students) {
-            if (student.getGpa() > highestGpa) {
-                highestGpa = student.getGpa();
-                highestGpaStudent = student;
-            }
-        }
-        return Optional.ofNullable(highestGpaStudent);
+        Query query = entityManager.createQuery("SELECT s FROM Student s WHERE s.gpa = (SELECT MAX(s2.gpa) FROM Student s2)");
+        query.setMaxResults(1);
+        return Optional.ofNullable((Student) query.getResultList().stream().findFirst().orElse(null));
     }
 
     public String joinStudentNames() {
