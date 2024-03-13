@@ -50,12 +50,18 @@ public class StudentService {
     }
 
     public String joinStudentNames() {
-        List<Student> students = studentRepository.findAll();
-        String result = "";
-        for (Student student : students) {
-            result += student.getName() + ", ";
+        StringBuilder resultBuilder = new StringBuilder();
+        List<String> uniqueNames = studentRepository.findDistinctStudentNames();
+        for (String name : uniqueNames) {
+            resultBuilder.append(name).append(", ");
         }
-        return result.substring(0, result.length() - 2);
+
+        String result = resultBuilder.toString();
+        if (!result.isEmpty()) {
+            result = result.substring(0, result.length() - 2);
+        }
+
+        return result;
     }
 }
 
