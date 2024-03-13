@@ -11,6 +11,6 @@ import java.util.List;
  * @author muhammad.khadafi
  */
 @Repository
-public interface StudentCourseRepository extends JpaRepository<StudentCourse, Long> {
+public interface StudentCourseRepository extends JpaRepository<StudentCourse, Long>, IStudentCourseRepository {
     List<StudentCourse> findByStudentId(Long studentId);
 }
